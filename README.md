@@ -1,6 +1,11 @@
 # Weather app
-Your app to check local(or any city) weather forecast
-[Click here and see]()
+Your app to check local(or any city) weather forecast.
+
+## Website
+To access app, click on this link: https://gabesenacom.github.io/weather-app/
+
+[or click here and see](https://gabesenacom.github.io/weather-app/)
+
 ## Screenshots
 ![Weather app day](readme-images/day.png)
 ![Weather app night](readme-images/night.png)
