@@ -1,17 +1,22 @@
 # Weather app
 Your app to check local(or any city) weather forecast.
 
+## Table of Contents
+
+- [Website](#website)
+- [Screenshots](#screenshots)
+- [TO-DO](#to-do)
+- [The Odin Project](#the-odin-project)
+
 ## Website
 To access app, click on this link: https://gabesenacom.github.io/weather-app/
 
 [or click here and see](https://gabesenacom.github.io/weather-app/)
 
 ## Screenshots
-![Weather app day](readme-images/day.png)
-![Weather app night](readme-images/night.png)
-![Weather app night on mobile](readme-images/night-mobile.png)
+![Weather app screenshots](readme-images/weather-app-screenshots.png)
 
-## TODO
+## TO-DO
 - [ ] Add system that find city to autocomplete when player search.
 - [ ] If has two or more city with same name, request to player choose one.
 
