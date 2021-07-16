@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weather app</title>
+    <link rel="stylesheet" type="text/css" href="main.css" />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/@tabler/icons@latest/iconfont/tabler-icons.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Archivo&family=Fjalla+One&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <p id="log">aa</p>
+    <header>
+      <form id="search-form">
+        <label for="search">
+          <i class="ti ti-search search-icon icon"></i
+          ><span class="hide-text">Search</span>
+        </label>
+        <input
+          type="text"
+          id="search"
+          name="search"
+          placeholder="Insert city name"
+          required
+        />
+        <button
+          type="submit"
+          name="submit"
+          class="btn border-radius-right-bottom-top"
+        >
+          <i class="ti ti-send"></i><span class="hide-text">Send</span>
+        </button>
+      </form>
+
+      <div id="config">
+        <div id="config-temp-format">
+          <button selected
+            class="temp-select btn border-radius-left-bottom-top"
+            data-config-temperature="ºC"
+          >
+            <i class="ti ti-temperature-celsius"></i
+            ><span class="hide-text">Celsius</span>
+          </button>
+          <button
+            class="temp-select btn border-radius-right-bottom-top"
+            data-config-temperature="ºF"
+          >
+            <i class="ti ti-temperature-fahrenheit"></i
+            ><span class="hide-text">Fahrenheit</span>
+          </button>
+        </div>
+        <div id="reload-weather">
+          <button id="config-reload" class="btn">
+            <i class="ti ti-refresh"></i
+            ><span class="hide-text">Reload Weather</span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main id="weather-predict-today">
+      <div id="weather-today-content">
+        <div>
+          <h2 class="title x3">Weather forecast</h2>
+          <p id="city-name"></p>
+          <p id="city-lon"></p>
+          <p id="city-lat"></p>
+        </div>
+
+        <div>
+          <p class="title x2">Temperature</p>
+          <p id="today-temp" class="subtitle"></p>
+          <p id="today-temp-min"></p>
+          <p id="today-temp-max"></p>
+        </div>
+
+        <figure id="weather-today">
+          <p class="title x2">Weather</p>
+          <img/>
+          <figcaption>
+            
+          </figcaption>
+        </figure>
+      </div>
+    </main>
+
+    <section id="more-info-weather-today">
+      <h2 class="title x2">More info about weather</h2>
+      <table>
+        <tbody>
+          <tr>
+            <td id="more-info-temp">Temperature</td>
+            <td id="more-info-temp-value"></td>
+          </tr>
+          <tr>
+            <td id="more-info-feels-like">Feels like</td>
+            <td id="more-info-feels-like-value"></td>
+          </tr>
+          <tr>
+            <td id="more-info-tempmin-tempmax">Temperature Max/Min</td>
+            <td id="more-info-tempmin-tempmax-value"></td>
+          </tr>
+          <tr>
+            <td id="more-info-humidity">Humidity</td>
+            <td id="more-info-humidity-value"></td>
+          </tr>
+          <tr>
+            <td id="more-info-pressure">Pressure</td>
+            <td id="more-info-pressure-value"></td>
+          </tr>
+          <tr>
+            <td id="more-info-wind-speed">Wind speed</td>
+            <td id="more-info-wind-speed-value"></td>
+          </tr>
+          <tr>
+            <td id="more-info-cloudiness">Cloudiness</td>
+            <td id="more-info-cloudiness-value"></td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+    <section id="next-days-container">
+      <h2 class="title 2x">Weather forecast for next days</h2>
+      <ul id="next-days">
+      </ul>
+    </section>
+
+    <script type="text/javascript" src="main.js"></script>
+  </body>
+</html>
