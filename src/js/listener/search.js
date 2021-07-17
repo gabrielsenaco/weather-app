@@ -3,7 +3,8 @@ import PubSub from 'pubsub-js'
 import TOPIC from './../topics'
 
 const search = document.getElementById('search')
-
+const searchForm = document
+  .getElementById('search-form')
 function requestNewWeather (event) {
   event.preventDefault()
   if (search.value.length === 0) {
@@ -19,8 +20,7 @@ function requestNewWeather (event) {
   }
   PubSub.publish(TOPIC.LOG, { message: 'Loading city...' })
   PubSub.publish(TOPIC.SETUP_WEATHER, { name: search.value })
+  searchForm.reset()
 }
 
-document
-  .getElementById('search-form')
-  .addEventListener('submit', requestNewWeather)
+searchForm.addEventListener('submit', requestNewWeather)
