@@ -44,7 +44,7 @@ export async function getConvertedWeatherByCoords (lat, lon) {
 }
 
 export function getWeatherIconURL (iconID) {
-  return `http://openweathermap.org/img/wn/${iconID}@2x.png`
+  return `https://openweathermap.org/img/wn/${iconID}@2x.png`
 }
 
 export function convertWeatherToSimpleObject (json) {
