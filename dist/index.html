@@ -15,7 +15,12 @@
     />
   </head>
   <body>
-    <p id="log">aa</p>
+    <div>
+      <label class="hide-text" for="load-progress">Page loading:</label>
+      <progress id="load-progress" max="100" value="60" class="show"> 70% </progress>
+      <p id="log"></p>
+    </div>
+    
     <header>
       <form id="search-form">
         <label for="search">
@@ -64,7 +69,7 @@
       </div>
     </header>
 
-    <main id="weather-predict-today">
+    <main id="weather-forecast-today">
       <div id="weather-today-content">
         <div>
           <h2 class="title x3">Weather forecast</h2>

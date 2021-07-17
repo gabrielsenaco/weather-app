@@ -139,13 +139,13 @@ header {
   cursor: pointer;
 }
 
-#weather-predict-today {
+#weather-forecast-today {
   background-color: var(--blue-color);
   padding: 1rem 0;
   box-shadow: var(--card-shadow);
 }
 
-#weather-predict-today * {
+#weather-forecast-today * {
   color: var(--white-color);
 }
 
@@ -225,7 +225,7 @@ tr:nth-child(even) {
   background-color: var(--dark-blue-color);
 }
 
-#weather-predict-today {
+#weather-forecast-today {
   margin: 2rem 0;
 }
 
@@ -332,7 +332,26 @@ tr:nth-child(even) {
   color: var(--white-color);
 }
 
-#log.show {
+#load-progress {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 0.32rem;
+  display: none;
+  border: none;
+  color: var(--success-color);
+}
+
+#load-progress::-moz-progress-bar, #load-progress::-webkit-progress-value { 
+  background: var(--success-color);
+}
+
+#load-progress.error, #load-progress.error::-moz-progress-bar, #load-progress::-webkit-progress-value {
+  background: var(--danger-color);
+  color: var(--danger-color);
+}
+
+#log.show, #load-progress.show {
   display: block;
 }
 
@@ -347,7 +366,7 @@ body[theme='night'] {
 body[theme='night'] #search-form,
 body[theme='night'] #config-temp-format,
 body[theme='night'] #reload-weather,
-body[theme='night'] #weather-predict-today,
+body[theme='night'] #weather-forecast-today,
 body[theme='night'] #next-days-container,
 body[theme='night'] #more-info-weather-today {
   background-color: var(--black-color);

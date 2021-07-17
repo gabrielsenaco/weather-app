@@ -8,6 +8,7 @@ import './display/log'
 import './listener/temperature_scale_mode'
 import './listener/search'
 import './listener/reload_weather'
+import './display/progress'
 
 import PubSub from 'pubsub-js'
 import TOPIC from './topics'
@@ -28,14 +29,18 @@ const setting = {
 async function setupWeather (basicWeather) {
   PubSub.publish(TOPIC.BUILD_CURRENT_WEATHER, basicWeather)
   PubSub.publish(TOPIC.LOG, { message: 'Weather loaded.' })
+  PubSub.publish(TOPIC.INSERT_NEW_PROGRESS, {value: 80})
   setting.basicWeather = basicWeather
   setting.city = basicWeather.coord.name
   getConvertedDailyWeather(basicWeather.coord.lat, basicWeather.coord.lon)
     .then(response => {
       PubSub.publish(TOPIC.BUILD_NEXT_DAYS, response)
       setting.nextDaysWeather = response
+      PubSub.publish(TOPIC.INSERT_NEW_PROGRESS, {value: 100})
+      PubSub.publish(TOPIC.FINISH_PROGRESS, {fail: false})
     })
     .catch(err => {
+      PubSub.publish(TOPIC.FINISH_PROGRESS, {fail: true})
       console.error(err)
       PubSub.publish(TOPIC.LOG, {
         message: 'We cannot load weather for the next days. Sorry!'
@@ -50,6 +55,7 @@ function canAccessGeolocation () {
 
 async function loadWeatherByLocation () {
   function accept (position) {
+    PubSub.publish(TOPIC.INSERT_NEW_PROGRESS, {value: 50})
     const data = {
       lat: position.coords.latitude,
       lon: position.coords.longitude
@@ -58,6 +64,7 @@ async function loadWeatherByLocation () {
   }
 
   function error (err) {
+    PubSub.publish(TOPIC.FINISH_PROGRESS, {fail: true})
     PubSub.publish(TOPIC.LOG, {
       message: `We cannot load your location, try find the weather searching by city name. Error code: ${err.code}`
     })
@@ -71,6 +78,8 @@ function init () {
   PubSub.publish(TOPIC.SETUP_WEATHER, { name: 'Brasilia' })
 
   if (canAccessGeolocation()) {
+    PubSub.publish(TOPIC.ENABLE_PROGRESS, {})
+    PubSub.publish(TOPIC.INSERT_NEW_PROGRESS, {value: 10})
     setTimeout(
       () =>
         PubSub.publish(TOPIC.LOG, {
@@ -83,6 +92,7 @@ function init () {
 }
 
 async function loadSetupWeather (topic, data) {
+  PubSub.publish(TOPIC.ENABLE_PROGRESS, {})
   let basicWeather
   try {
     if (data.lat) {
@@ -90,7 +100,9 @@ async function loadSetupWeather (topic, data) {
     } else {
       basicWeather = await getConvertedWeather(data.name)
     }
+    PubSub.publish(TOPIC.INSERT_NEW_PROGRESS, {value: 50})
   } catch (err) {
+    PubSub.publish(TOPIC.FINISH_PROGRESS, {fail: true})
     console.error(err)
     PubSub.publish(TOPIC.LOG, {
       message:

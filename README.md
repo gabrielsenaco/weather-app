@@ -17,8 +17,8 @@ To access app, click on this link: https://gabesenacom.github.io/weather-app/
 ![Weather app screenshots](readme-images/weather-app-screenshots.png)
 
 ## TO-DO
-- [ ] Add system that find city to autocomplete when player search.
-- [ ] If has two or more city with same name, request to player choose one.
+- [ ] Add system that find city to autocomplete when user search.
+- [ ] If has two or more city with same name, request to user choose one.
 
 ## The Odin Project
 This project was proposed in The Odin Project curriculum.
